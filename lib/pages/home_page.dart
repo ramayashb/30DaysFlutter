@@ -6,14 +6,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     int days = 30;
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Catelog App"),
-        ),
-        body: Center(child: Container(child: Text("hi $days"))),
-        drawer: Drawer(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Catelog App"),
       ),
+      body: Center(child: Container(child: Text("hi $days"))),
+      drawer: Drawer(),
     );
   }
 }
