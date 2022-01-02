@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_demo/Utils/routes.dart';
 import 'package:flutter_application_demo/models/catalog.dart';
 import 'package:flutter_application_demo/widgets/home_widget/catalog_header.dart';
 import 'package:flutter_application_demo/widgets/home_widget/catalog_list.dart';
@@ -36,6 +38,11 @@ class _HomePageState extends State<HomePage> {
     int days = 30;
     //final dummyList = List.generate(5, (index) => CatalogModel.items[0]);
     return Scaffold(
+       floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+        backgroundColor: Colors.red,
+        child: Icon(CupertinoIcons.cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: Vx.m32,

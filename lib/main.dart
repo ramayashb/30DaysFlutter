@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_demo/Utils/routes.dart';
+import 'package:flutter_application_demo/pages/cart_page.dart';
 import 'package:flutter_application_demo/pages/home_page.dart';
 import 'package:flutter_application_demo/pages/login_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
     //  home: HomePage(),
-     themeMode: ThemeMode.light,
+     themeMode: ThemeMode.system,
      darkTheme: ThemeData(
        brightness: Brightness.dark,
        fontFamily: GoogleFonts.lato().fontFamily
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
        "/" : (context)=> HomePage(),
        MyRoutes.homeRoute: (context) => HomePage(),
        MyRoutes.loginRoute: (context) => LoginPage(),
+       MyRoutes.cartRoute: (context) => CartPage(),
      },
     );
   }

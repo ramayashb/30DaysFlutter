@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/models/cart.dart';
 import 'package:flutter_application_demo/models/catalog.dart';
 import 'package:flutter_application_demo/pages/home_detail_page.dart';
 import 'package:flutter_application_demo/widgets/home_widget/catalog_image.dart';
@@ -59,19 +60,45 @@ class CatalogItem extends StatelessWidget {
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
                 10.heightBox,
-                ElevatedButton(
-                    onPressed: () {
-                      print(catalog.name);
-                    },
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.red),
-                        shape: MaterialStateProperty.all(StadiumBorder())),
-                    child: "Bye".text.make())
+                 _addToCard(catalog: catalog)
               ],
             ).pOnly(right: 8.0)
           ],
         ))
       ],
-    )).white.rounded.square(100).make().py16();
+    )).color(context.cardColor).rounded.square(100).make().py16();
+  }
+}
+
+
+class _addToCard extends StatefulWidget {
+  final Item catalog;
+
+  const _addToCard({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
+
+  @override
+  State<_addToCard> createState() => _addToCardState();
+}
+
+class _addToCardState extends State<_addToCard> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        onPressed: () {
+          isAdded = isAdded.toggle();
+          setState(() {});
+          final _catalog = CatalogModel();
+          final _cart = CartModel();
+          _cart.catalog = _catalog;
+          _cart.add(widget.catalog);
+        },
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.red),
+            shape: MaterialStateProperty.all(StadiumBorder())),
+        child: isAdded ? Icon(Icons.done) : "Add to cart".text.make());
   }
 }
